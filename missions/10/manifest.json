@@ -1,0 +1,40 @@
+{
+  "id": 10,
+  "phase": "C",
+  "title": "Tenant Walls",
+  "skill": "Isolation / multi-tenancy",
+  "scenario": "An AI-enabled workflow trusts a tenant identifier supplied in a request body instead of the authenticated identity.",
+  "objective": "Bind tenant authorization to a trusted token claim and enforce a subject-resource tenant match.",
+  "ai_native_dimension": "The learner secures an AI workflow crossing trust boundaries and proves tenant isolation rather than trusting application intent.",
+  "deliverables": [
+    "authz.json uses token_claim tenant source",
+    "tenant match enforcement enabled",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "json_equals",
+      "file": "authz.json",
+      "path": "tenant_source",
+      "value": "token_claim",
+      "message": "tenant source must be token_claim"
+    },
+    {
+      "type": "json_equals",
+      "file": "authz.json",
+      "path": "enforce_subject_resource_match",
+      "value": true,
+      "message": "subject/resource tenant match must be enforced"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Tenant Walls and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": null,
+  "estimated_hours": 8
+}

@@ -1,0 +1,55 @@
+{
+  "id": 15,
+  "phase": "D",
+  "title": "Revise and Present",
+  "skill": "Communication / remediation",
+  "scenario": "A generic AI-generated recommendation list is technically plausible but lacks priority, ownership, validation, and business context.",
+  "objective": "Convert generic recommendations into an actionable, prioritized remediation plan suitable for leadership review.",
+  "ai_native_dimension": "The learner critiques AI-generated recommendations and turns them into accountable human decisions.",
+  "deliverables": [
+    "recommendations.md includes priority, owner, validation, residual risk",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "regex",
+      "file": "recommendations.md",
+      "pattern": "Priority",
+      "message": "priority required"
+    },
+    {
+      "type": "regex",
+      "file": "recommendations.md",
+      "pattern": "Owner",
+      "message": "owner required"
+    },
+    {
+      "type": "regex",
+      "file": "recommendations.md",
+      "pattern": "Validation",
+      "message": "validation required"
+    },
+    {
+      "type": "regex",
+      "file": "recommendations.md",
+      "pattern": "Residual Risk",
+      "message": "residual risk required"
+    },
+    {
+      "type": "min_text_length",
+      "file": "recommendations.md",
+      "value": 300,
+      "message": "recommendation plan is too short"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Revise and Present and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": null,
+  "estimated_hours": 10
+}

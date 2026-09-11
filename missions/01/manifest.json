@@ -1,0 +1,46 @@
+{
+  "id": 1,
+  "phase": "A",
+  "title": "Plaintext",
+  "skill": "Secrets / data exposure",
+  "scenario": "A small internal service was assembled quickly. An AI assistant claims the exposed string is only a harmless example value.",
+  "objective": "Remove the plaintext credential from the committed configuration and replace it with an environment-variable reference while documenting independent verification.",
+  "ai_native_dimension": "AI proposes that the visible credential is a non-sensitive sample. The learner must prove whether it is a secret and remove it safely.",
+  "deliverables": [
+    "config.json references APP_API_KEY instead of a literal key",
+    "no training secret remains in config.json",
+    ".env.example documents APP_API_KEY without a value",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "json_equals",
+      "file": "config.json",
+      "path": "api_key",
+      "value": "${APP_API_KEY}",
+      "message": "config.json must reference ${APP_API_KEY}"
+    },
+    {
+      "type": "file_not_contains",
+      "file": "config.json",
+      "value": "TRAINING-KEY-PLAINTEXT-12345",
+      "message": "plaintext training key must be removed"
+    },
+    {
+      "type": "file_contains",
+      "file": ".env.example",
+      "value": "APP_API_KEY=",
+      "message": ".env.example must document APP_API_KEY"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Plaintext and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": "The value looks like a demo token. I would leave it in place unless a scanner explicitly labels it secret.",
+  "estimated_hours": 8
+}

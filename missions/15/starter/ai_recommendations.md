@@ -1,0 +1,4 @@
+- Improve logging.
+- Use least privilege.
+- Add rate limiting.
+- Monitor the system.

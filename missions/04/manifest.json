@@ -1,0 +1,45 @@
+{
+  "id": 4,
+  "phase": "A",
+  "title": "Git Remembers",
+  "skill": "Git history / secret leakage",
+  "scenario": "A secret was removed from the current file, but a simulated repository-history extract still contains it.",
+  "objective": "Document rotation/history-remediation actions and prove the exposed credential is revoked.",
+  "ai_native_dimension": "AI-generated code caused a secret to be committed; the learner must reason about current-file cleanup versus historical exposure.",
+  "deliverables": [
+    "revoked_secrets.json records revoked credential",
+    "remediation.md explains rotation and history rewrite",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "json_equals",
+      "file": "revoked_secrets.json",
+      "path": "TRAINING-GIT-SECRET-7788",
+      "value": "revoked",
+      "message": "exposed credential must be marked revoked"
+    },
+    {
+      "type": "regex",
+      "file": "remediation.md",
+      "pattern": "rotate|revoke",
+      "message": "remediation must include rotation/revocation"
+    },
+    {
+      "type": "regex",
+      "file": "remediation.md",
+      "pattern": "history|rewrite|filter",
+      "message": "remediation must address repository history"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Git Remembers and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": null,
+  "estimated_hours": 8
+}

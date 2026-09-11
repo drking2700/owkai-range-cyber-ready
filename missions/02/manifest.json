@@ -1,0 +1,37 @@
+{
+  "id": 2,
+  "phase": "A",
+  "title": "Who Can Sudo",
+  "skill": "Privilege / permissions",
+  "scenario": "A support analyst was granted broad sudo access during an incident. AI says the account is low risk because it is not an administrator account.",
+  "objective": "Reduce sudo authority to the minimum command needed for log review and document why account labels do not establish privilege.",
+  "ai_native_dimension": "AI provides an incomplete privilege assessment based on username/account role rather than effective sudo rights.",
+  "deliverables": [
+    "sudoers.conf limits analyst to journalctl",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "file_contains",
+      "file": "sudoers.conf",
+      "value": "analyst ALL=(root) /usr/bin/journalctl",
+      "message": "analyst must be limited to /usr/bin/journalctl"
+    },
+    {
+      "type": "file_not_contains",
+      "file": "sudoers.conf",
+      "value": "NOPASSWD: ALL",
+      "message": "broad passwordless sudo must be removed"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Who Can Sudo and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": "Because the account is named analyst rather than admin, privilege escalation is unlikely.",
+  "estimated_hours": 8
+}

@@ -1,0 +1,8 @@
+{
+  "rate_limit": {
+    "enabled": false,
+    "scope": "global",
+    "per_minute": 0,
+    "burst": 1000
+  }
+}

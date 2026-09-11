@@ -1,0 +1,14 @@
+{
+  "mission_id": 1,
+  "prompts_or_tasks": [
+    "Describe what you asked AI to help with."
+  ],
+  "accepted_outputs": [],
+  "rejected_outputs": [
+    "Document any materially wrong or incomplete AI advice."
+  ],
+  "verification_evidence": [
+    "Describe objective evidence used to verify the conclusion."
+  ],
+  "human_decision": "Explain the final decision you made and why you remain accountable for it."
+}

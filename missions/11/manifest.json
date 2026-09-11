@@ -1,0 +1,44 @@
+{
+  "id": 11,
+  "phase": "C",
+  "title": "Chain of Custody",
+  "skill": "Evidence / integrity",
+  "scenario": "An AI-generated incident summary references local artifacts but the evidence package has no integrity metadata.",
+  "objective": "Create a verifiable evidence manifest with SHA-256 hashes, UTC timestamp, and tool version.",
+  "ai_native_dimension": "The learner decides whether AI-generated analysis can be trusted by anchoring claims to preserved, hashed evidence.",
+  "deliverables": [
+    "evidence_manifest.json includes hashes for event.log and config_snapshot.json",
+    "UTC collected_at",
+    "tool_version",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "sha256_manifest",
+      "file": "evidence_manifest.json",
+      "message": "valid evidence manifest required"
+    },
+    {
+      "type": "regex",
+      "file": "evidence_manifest.json",
+      "pattern": "collected_at",
+      "message": "collected_at required"
+    },
+    {
+      "type": "regex",
+      "file": "evidence_manifest.json",
+      "pattern": "tool_version",
+      "message": "tool_version required"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Chain of Custody and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": "The summary is internally consistent, so checksums are optional unless a regulator asks for them.",
+  "estimated_hours": 8
+}

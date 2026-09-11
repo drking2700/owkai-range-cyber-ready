@@ -1,0 +1,32 @@
+{
+  "id": 3,
+  "phase": "A",
+  "title": "Open Door",
+  "skill": "Network exposure",
+  "scenario": "A local administration service is listening on all interfaces. AI-assisted enumeration suggests several possible exposures.",
+  "objective": "Restrict the admin service to local access and prove which exposure was real.",
+  "ai_native_dimension": "AI helps form enumeration hypotheses; the learner must validate the binding and make the smallest correction.",
+  "deliverables": [
+    "service.json binds admin interface to 127.0.0.1",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "json_equals",
+      "file": "service.json",
+      "path": "admin.host",
+      "value": "127.0.0.1",
+      "message": "admin service must bind to 127.0.0.1"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Open Door and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": null,
+  "estimated_hours": 8
+}

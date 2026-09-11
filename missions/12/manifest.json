@@ -1,0 +1,51 @@
+{
+  "id": 12,
+  "phase": "C",
+  "title": "Agent Gets a Tool",
+  "skill": "Agent / MCP / tool security",
+  "scenario": "An assistant is connected to a tool catalog containing broad shell and file-system capabilities even though the business task only needs read-only knowledge access.",
+  "objective": "Reduce the catalog to approved read-only tools, enforce default deny, and require confirmation for any future write action.",
+  "ai_native_dimension": "The learner secures tool identity, authorization, and failure behavior instead of assuming the model will choose safe tools.",
+  "deliverables": [
+    "tool_policy.json only allows kb.search and ticket.read",
+    "default deny enabled",
+    "write confirmation required",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "json_list_exact",
+      "file": "tool_policy.json",
+      "path": "allowed_tools",
+      "value": [
+        "kb.search",
+        "ticket.read"
+      ],
+      "message": "only kb.search and ticket.read should be allowed"
+    },
+    {
+      "type": "json_equals",
+      "file": "tool_policy.json",
+      "path": "default",
+      "value": "deny",
+      "message": "default must be deny"
+    },
+    {
+      "type": "json_equals",
+      "file": "tool_policy.json",
+      "path": "require_confirmation_for_write",
+      "value": true,
+      "message": "write actions must require confirmation"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Agent Gets a Tool and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": true,
+  "seeded_ai_response": null,
+  "estimated_hours": 8
+}

@@ -1,0 +1,6 @@
+{
+  "tool_actions": {
+    "audit_required": false,
+    "sink": "stdout"
+  }
+}

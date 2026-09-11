@@ -1,0 +1,39 @@
+{
+  "id": 14,
+  "phase": "D",
+  "title": "AI as Analyst",
+  "skill": "AI-assisted investigation",
+  "scenario": "An AI analyst has produced a confident assessment containing both correct and incorrect conclusions.",
+  "objective": "Review every material claim, accept or reject it with evidence, and document at least two incorrect/incomplete AI conclusions.",
+  "ai_native_dimension": "This mission makes AI fallibility explicit. The learner must use evidence to challenge the model.",
+  "deliverables": [
+    "analysis_review.json classifies claims",
+    "at least two rejected claims",
+    "each decision cites evidence",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "regex",
+      "file": "analysis_review.json",
+      "pattern": "\"decision\"\\s*:\\s*\"reject\"[\\s\\S]*\"decision\"\\s*:\\s*\"reject\"",
+      "message": "at least two claims must be rejected"
+    },
+    {
+      "type": "regex",
+      "file": "analysis_review.json",
+      "pattern": "EVID-[0-9]+",
+      "message": "review decisions must cite evidence IDs"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in AI as Analyst and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": null,
+  "estimated_hours": 10
+}

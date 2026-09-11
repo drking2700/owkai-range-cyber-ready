@@ -1,0 +1,4 @@
+{
+  "tenant_source": "request_body",
+  "enforce_subject_resource_match": false
+}
