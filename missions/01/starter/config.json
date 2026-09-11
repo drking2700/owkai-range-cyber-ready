@@ -1,0 +1,5 @@
+{
+  "service": "catalog-helper",
+  "api_key": "TRAINING-KEY-PLAINTEXT-12345",
+  "debug": false
+}

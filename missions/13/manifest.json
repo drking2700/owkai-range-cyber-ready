@@ -1,0 +1,56 @@
+{
+  "id": 13,
+  "phase": "D",
+  "title": "Assessment Draft",
+  "skill": "Security assessment",
+  "scenario": "You must turn technical evidence from a sanitized AI-enabled system into a concise security assessment.",
+  "objective": "Produce an assessment that separates observed evidence, risk interpretation, remediation, and remaining uncertainty.",
+  "ai_native_dimension": "AI may help draft the assessment, but every material claim must be grounded in cited local evidence.",
+  "deliverables": [
+    "assessment.md with Evidence, Risk, Recommendation, Verification sections",
+    "at least two evidence IDs",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "regex",
+      "file": "assessment.md",
+      "pattern": "#?\\s*Evidence",
+      "message": "Evidence section required"
+    },
+    {
+      "type": "regex",
+      "file": "assessment.md",
+      "pattern": "#?\\s*Risk",
+      "message": "Risk section required"
+    },
+    {
+      "type": "regex",
+      "file": "assessment.md",
+      "pattern": "#?\\s*Recommendation",
+      "message": "Recommendation section required"
+    },
+    {
+      "type": "regex",
+      "file": "assessment.md",
+      "pattern": "#?\\s*Verification",
+      "message": "Verification section required"
+    },
+    {
+      "type": "regex",
+      "file": "assessment.md",
+      "pattern": "EVID-[0-9]+.*EVID-[0-9]+",
+      "message": "cite at least two evidence IDs"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Assessment Draft and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": null,
+  "estimated_hours": 10
+}

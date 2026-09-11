@@ -1,0 +1,55 @@
+{
+  "id": 8,
+  "phase": "B",
+  "title": "Print Is Not a Log",
+  "skill": "Observability / evidence",
+  "scenario": "A service prints human-readable activity to stdout but cannot reliably reconstruct who did what later.",
+  "objective": "Configure structured security events with durable storage and actor/action/outcome fields.",
+  "ai_native_dimension": "The learner distinguishes plausible AI explanations and console output from evidence suitable for investigation.",
+  "deliverables": [
+    "logging.json uses structured format",
+    "durable sink configured",
+    "actor/action/outcome fields present",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "json_equals",
+      "file": "logging.json",
+      "path": "format",
+      "value": "json",
+      "message": "logging format must be json"
+    },
+    {
+      "type": "json_in",
+      "file": "logging.json",
+      "path": "sink",
+      "values": [
+        "append_only",
+        "immutable_store"
+      ],
+      "message": "durable audit sink required"
+    },
+    {
+      "type": "json_list_exact",
+      "file": "logging.json",
+      "path": "fields",
+      "value": [
+        "actor",
+        "action",
+        "outcome"
+      ],
+      "message": "actor/action/outcome fields required"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Print Is Not a Log and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": true,
+  "seeded_ai_response": null,
+  "estimated_hours": 8
+}

@@ -1,0 +1,45 @@
+{
+  "id": 6,
+  "phase": "B",
+  "title": "Silent Enum",
+  "skill": "Enumeration / discovery",
+  "scenario": "Automated discovery requests blend into ordinary traffic because actor and request metadata are incomplete.",
+  "objective": "Enable sufficient telemetry and thresholding to detect repeated enumeration by one identity.",
+  "ai_native_dimension": "The learner distinguishes normal automation from suspicious automated discovery using evidence rather than request volume alone.",
+  "deliverables": [
+    "telemetry.json records actor_id, user_agent, path, outcome",
+    "enumeration threshold configured",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "json_list_exact",
+      "file": "telemetry.json",
+      "path": "request_fields",
+      "value": [
+        "actor_id",
+        "user_agent",
+        "path",
+        "outcome"
+      ],
+      "message": "required request telemetry fields are missing"
+    },
+    {
+      "type": "json_lte",
+      "file": "telemetry.json",
+      "path": "enumeration.alert_after_requests",
+      "value": 25,
+      "message": "enumeration alert threshold must be <=25 requests"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Silent Enum and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": null,
+  "estimated_hours": 8
+}

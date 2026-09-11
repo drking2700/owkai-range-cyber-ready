@@ -1,0 +1,8 @@
+{
+  "request_fields": [
+    "path"
+  ],
+  "enumeration": {
+    "alert_after_requests": 9999
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": 7,
+  "phase": "B",
+  "title": "Around the Log",
+  "skill": "Logging / telemetry gaps",
+  "scenario": "A tool action can bypass the normal application request logger, leaving no durable audit event.",
+  "objective": "Require auditable records for all tool actions and route them to an append-only sink.",
+  "ai_native_dimension": "Agent/tool activity exposes an observability blind spot; the learner determines what cannot be reconstructed after the fact.",
+  "deliverables": [
+    "audit_policy.json requires audit for all actions",
+    "sink is append_only",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "json_equals",
+      "file": "audit_policy.json",
+      "path": "tool_actions.audit_required",
+      "value": true,
+      "message": "tool actions must require audit"
+    },
+    {
+      "type": "json_equals",
+      "file": "audit_policy.json",
+      "path": "tool_actions.sink",
+      "value": "append_only",
+      "message": "audit sink must be append_only"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Around the Log and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": null,
+  "estimated_hours": 8
+}

@@ -1,0 +1,10 @@
+{
+  "allowed_tools": [
+    "shell.exec",
+    "fs.write",
+    "kb.search",
+    "ticket.read"
+  ],
+  "default": "allow",
+  "require_confirmation_for_write": false
+}

@@ -1,0 +1,55 @@
+{
+  "id": 5,
+  "phase": "B",
+  "title": "Rate the Limit",
+  "skill": "API abuse / rate limiting",
+  "scenario": "An internal agent can call a business API as fast as it can generate requests. The endpoint currently has no rate control.",
+  "objective": "Implement bounded per-identity request limits and a small burst allowance suitable for an automated client.",
+  "ai_native_dimension": "An agentic client generates machine-speed traffic; the learner must design limits that preserve business use without allowing unbounded requests.",
+  "deliverables": [
+    "api_policy.json enables per-identity rate limiting",
+    "limit is <=60/minute",
+    "burst is <=10",
+    "completed ai_work_record.json"
+  ],
+  "verification": [
+    {
+      "type": "json_equals",
+      "file": "api_policy.json",
+      "path": "rate_limit.enabled",
+      "value": true,
+      "message": "rate limiting must be enabled"
+    },
+    {
+      "type": "json_equals",
+      "file": "api_policy.json",
+      "path": "rate_limit.scope",
+      "value": "identity",
+      "message": "rate limit must be per identity"
+    },
+    {
+      "type": "json_lte",
+      "file": "api_policy.json",
+      "path": "rate_limit.per_minute",
+      "value": 60,
+      "message": "rate limit must be <=60/minute"
+    },
+    {
+      "type": "json_lte",
+      "file": "api_policy.json",
+      "path": "rate_limit.burst",
+      "value": 10,
+      "message": "burst must be <=10"
+    }
+  ],
+  "aar_questions": [
+    "What was the security problem in Rate the Limit and what objective evidence proved it?",
+    "What was the risk if it remained unresolved?",
+    "What did you change and why?",
+    "How did you verify the result independently of AI output?",
+    "Where did AI help, where was it wrong/incomplete, and what remained your responsibility?"
+  ],
+  "human_review_required": false,
+  "seeded_ai_response": null,
+  "estimated_hours": 8
+}
